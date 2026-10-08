@@ -1,0 +1,196 @@
+.call-buttons {
+    position: fixed;
+    bottom: 22px;
+    left: 20px;
+    z-index: 9990;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    font-family: "Plus Jakarta Sans", "Montserrat", sans-serif;
+}
+
+.call-buttons__item {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    margin-left: 4px;
+    border-radius: 50%;
+    box-shadow: 0 8px 20px rgba(36, 20, 100, .18);
+    color: #fff;
+    text-decoration: none;
+    transition: transform .25s ease;
+}
+
+.call-buttons__item:hover {
+    transform: translateY(-3px);
+    color: #fff;
+}
+
+.call-buttons__item svg {
+    width: 24px;
+    height: 24px;
+}
+
+.call-buttons__item--zalo {
+    background: #0068ff;
+}
+
+.call-buttons__item--zalo b {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: -.01em;
+}
+
+.call-buttons__item--messenger {
+    background: linear-gradient(135deg, #00b2ff, #a033ff 60%, #ff5c87);
+}
+
+.call-buttons__tip {
+    position: absolute;
+    top: 50%;
+    left: calc(100% + 10px);
+    padding: 5px 10px;
+    border-radius: 8px;
+    background: #241464;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-6px, -50%);
+    transition: opacity .2s ease, transform .2s ease;
+}
+
+.call-buttons__item:hover .call-buttons__tip {
+    opacity: 1;
+    transform: translate(0, -50%);
+}
+
+.call-buttons__phone {
+    display: flex;
+    align-items: center;
+    padding: 0 18px 0 0;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #f9842b, #fb4423);
+    box-shadow: 0 10px 24px rgba(251, 68, 35, .35);
+    color: #fff;
+    text-decoration: none;
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.call-buttons__phone:hover {
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px rgba(251, 68, 35, .42);
+}
+
+.call-buttons__ring {
+    position: relative;
+    display: grid;
+    flex: 0 0 auto;
+    place-items: center;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .16);
+}
+
+.call-buttons__ring::before,
+.call-buttons__ring::after {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: rgba(251, 68, 35, .45);
+    content: "";
+    animation: call-pulse 2s ease-out infinite;
+    z-index: -1;
+}
+
+.call-buttons__ring::after {
+    animation-delay: 1s;
+}
+
+.call-buttons__ring svg {
+    width: 22px;
+    height: 22px;
+    animation: call-shake 1.6s ease-in-out infinite;
+}
+
+.call-buttons__label {
+    margin-left: 6px;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: .02em;
+    white-space: nowrap;
+}
+
+@keyframes call-pulse {
+    0% {
+        opacity: .9;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1.8);
+    }
+}
+
+@keyframes call-shake {
+    0%, 50%, 100% {
+        transform: rotate(0);
+    }
+
+    10%, 30% {
+        transform: rotate(-18deg);
+    }
+
+    20%, 40% {
+        transform: rotate(18deg);
+    }
+}
+
+@media (max-width: 959px) {
+    body:has(.service-mobile-bar) .call-buttons {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .call-buttons {
+        bottom: 16px;
+        left: 14px;
+        gap: 8px;
+    }
+
+    .call-buttons__phone {
+        padding: 0;
+    }
+
+    .call-buttons__label,
+    .call-buttons__tip {
+        display: none;
+    }
+
+    .call-buttons__ring {
+        width: 50px;
+        height: 50px;
+    }
+
+    .call-buttons__item {
+        width: 42px;
+        height: 42px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .call-buttons__ring::before,
+    .call-buttons__ring::after,
+    .call-buttons__ring svg {
+        animation: none;
+    }
+}
