@@ -194,7 +194,7 @@
 .services__body {
     position: relative;
     z-index: 1;
-    max-width: 62%;
+    max-width: 80%;
 }
 
 .services__icon {
