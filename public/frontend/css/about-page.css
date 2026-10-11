@@ -512,10 +512,173 @@
     opacity: 1;
 }
 
+/* ---------- Vision / Mission / Values ---------- */
+.about-mission {
+    display: grid;
+    gap: clamp(18px, 2.4vw, 28px);
+    margin-top: clamp(40px, 5vw, 64px);
+}
+
+.about-mission__block {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: clamp(380px, 34vw, 460px);
+    overflow: hidden;
+    border-radius: 22px;
+    background:
+        radial-gradient(60% 70% at 85% 15%, rgba(255, 255, 255, .85) 0%, rgba(255, 255, 255, 0) 60%),
+        linear-gradient(180deg, #7fbef0 0%, #a9d5f6 38%, #d6ecfb 72%, #f1f8fe 100%);
+    box-shadow: 0 14px 34px rgba(36, 20, 100, .1);
+    isolation: isolate;
+}
+
+.about-mission__block.has-image {
+    background: var(--block-bg) center / cover no-repeat;
+}
+
+.about-mission__block::before {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: linear-gradient(90deg, rgba(255, 255, 255, .62) 0%, rgba(255, 255, 255, .38) 42%, rgba(255, 255, 255, 0) 70%);
+    content: "";
+    pointer-events: none;
+}
+
+.about-mission__clouds {
+    position: absolute;
+    right: -6%;
+    bottom: -20%;
+    left: -6%;
+    z-index: 0;
+    width: 112%;
+    max-width: none;
+    height: auto;
+    opacity: .85;
+    pointer-events: none;
+}
+
+.about-mission__balloons {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    width: 34%;
+    pointer-events: none;
+}
+
+.about-mission__balloon {
+    position: absolute;
+    height: auto;
+    max-width: none;
+    filter: drop-shadow(0 12px 18px rgba(7, 34, 75, .18));
+    animation: about-mission-float 7s ease-in-out infinite;
+}
+
+.about-mission__balloon--lg {
+    top: -6%;
+    right: 2%;
+    width: 72%;
+}
+
+.about-mission__balloon--md {
+    top: 44%;
+    left: 30%;
+    width: 22%;
+    animation-duration: 9s;
+    animation-delay: -3s;
+}
+
+.about-mission__balloon--sm {
+    right: 6%;
+    bottom: 6%;
+    width: 30%;
+    animation-duration: 8s;
+    animation-delay: -5s;
+}
+
+.about-mission__content {
+    position: relative;
+    z-index: 1;
+    width: min(62%, 640px);
+    margin: clamp(20px, 3vw, 40px) clamp(18px, 3.4vw, 48px);
+    padding: clamp(22px, 2.6vw, 34px) clamp(22px, 2.8vw, 38px);
+    border: 1px solid rgba(255, 255, 255, .7);
+    border-radius: 18px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, .78) 0%, rgba(255, 255, 255, .58) 100%);
+    box-shadow: 0 10px 30px rgba(11, 58, 140, .12), inset 0 1px 0 rgba(255, 255, 255, .8);
+    -webkit-backdrop-filter: blur(10px) saturate(140%);
+    backdrop-filter: blur(10px) saturate(140%);
+}
+
+.about-mission__title {
+    margin: 0 0 clamp(14px, 1.6vw, 22px);
+    color: #0b3a8c;
+    font-family: "Great Vibes", "Dancing Script", cursive;
+    font-size: clamp(44px, 5vw, 68px);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+.about-mission__intro {
+    margin: 0 0 clamp(18px, 2vw, 26px);
+    color: #13306b;
+    font-size: clamp(14px, 1.1vw, 16px);
+    font-weight: 500;
+    line-height: 1.65;
+}
+
+.about-mission__list {
+    display: grid;
+    gap: clamp(12px, 1.4vw, 18px);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.about-mission__list li {
+    margin: 0;
+    padding: 0;
+}
+
+.about-mission__list h3 {
+    margin: 0 0 4px;
+    color: #f2711c;
+    font-family: "Plus Jakarta Sans", "Montserrat", sans-serif;
+    font-size: clamp(15px, 1.2vw, 17px);
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+.about-mission__list p {
+    margin: 0;
+    color: #13306b;
+    font-size: clamp(13px, 1vw, 15px);
+    line-height: 1.6;
+}
+
+@keyframes about-mission-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 959px) {
     .about-page__inner {
         width: min(720px, 88%);
+    }
+
+    .about-mission__content {
+        width: 72%;
+    }
+
+    .about-mission__balloons {
+        width: 32%;
+        opacity: .9;
     }
 
     .about-hero {
@@ -558,10 +721,52 @@
         width: 60px;
         height: 60px;
     }
+
+    .about-mission__block {
+        align-items: flex-start;
+        min-height: 0;
+        border-radius: 18px;
+    }
+
+    .about-mission__block::before {
+        background: linear-gradient(180deg, rgba(255, 255, 255, .25) 0%, rgba(255, 255, 255, .1) 100%);
+    }
+
+    .about-mission__content {
+        width: auto;
+        margin: 14px 14px 56px;
+        padding: 22px 18px;
+    }
+
+    .about-mission__clouds {
+        bottom: -4%;
+        opacity: .7;
+    }
+
+    .about-mission__balloons {
+        top: 10px;
+        right: 8px;
+        bottom: auto;
+        width: 96px;
+        height: 120px;
+        opacity: .55;
+    }
+
+    .about-mission__balloon--md,
+    .about-mission__balloon--sm {
+        display: none;
+    }
+
+    .about-mission__balloon--lg {
+        top: 0;
+        right: 0;
+        width: 100%;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .about-page__shape {
+    .about-page__shape,
+    .about-mission__balloon {
         animation: none;
     }
 }

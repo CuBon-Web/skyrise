@@ -51,7 +51,9 @@
                                                    <h2 class="hero-banner__title">
                                                        {!!$item->title!!}
                                                    </h2>
-                                                   {!!$item->description!!}
+                                                   @if ($eyebrow !== '')
+                                                       <div class="hero-banner__desc">{!! $item->description !!}</div>
+                                                   @endif
                                                @if ($item->link)
                                                    <a class="hero-banner__cta" href="{{ $item->link }}">
                                                        <span class="hero-banner__cta-label">Xem chi tiết</span>
@@ -156,17 +158,16 @@
                                                    <div class="elementor-widget-container">
                                                        <h6>ĐỘI BAY HIỆN ĐẠI</h6>
                                                        <hr class="no_line" />
-                                                       <p><strong>Với quá trình phát triển lâu dài, đội bay
-                                                               khinh khí cầu của chúng tôi, hiện tại lớn thứ 02
-                                                               tại Châu Á trên 01 đơn vị chủ sở hữu với tổng số
-                                                               <span style="color: #ff0000;">20 khinh khí cầu
-                                                                   lớn &amp; 60 khinh khí cầu nhỏ và 10 khinh
-                                                                   khí cầu hơi</span>, tiếp tục gia tăng số
-                                                               lượng khinh khí cầu với nhiều hình thù hấp
-                                                               dẫn.</strong></p>
-                                                       <p><strong>Đội bay đang là thành viên của Liên đoàn Thể
-                                                               thao Hàng không Việt Nam và Balloon Federation
-                                                               of America</strong></p>
+                                                       <p><strong>Với quá trình phát triển lâu dài và đồng hành
+                                                               cùng các sự kiện lớn tại Việt Nam, hiện tại chúng tôi
+                                                               có tổng số
+                                                               <span style="color: #ff0000;">20 khinh khí cầu bay
+                                                                   (gồm bay chở 6 người và bay chở 12 người), 60 khinh
+                                                                   khí cầu trang trí &amp; 50 khinh khí cầu bay bằng
+                                                                   khí heli</span>. Skyrise tiếp tục phát triển và gia
+                                                               tăng số lượng khinh khí cầu cũng như các khinh khí cầu
+                                                               với hình thù đặc sắc theo yêu cầu phong phú của khách
+                                                               hàng.</strong></p>
                                                    </div>
                                                </div>
                                                <div class="elementor-element elementor-element-978ff19 elementor-widget elementor-widget-spacer"

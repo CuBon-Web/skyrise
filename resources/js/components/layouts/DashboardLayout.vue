@@ -192,6 +192,10 @@ export default {
               name: "Cài đặt chung",
               path: "/setting",
             },
+            {
+              name: "Tầm nhìn - Sứ mệnh",
+              path: "/about-blocks",
+            },
              {
               name: "Thư viện ảnh",
               path: "/albumAffter",
@@ -281,7 +285,7 @@ export default {
       if (path.startsWith("/pagecontent")) return "pagecontent.view";
       if (path.startsWith("/customer")) return "customer.view";
       if (path.startsWith("/promotion")) return "promotion.view";
-      if (path.startsWith("/event")) return "website.view";
+      if (path.startsWith("/event") || path.startsWith("/about-blocks")) return "website.view";
       if (
         path.startsWith("/banner") ||
         path.startsWith("/bannerslogan") ||

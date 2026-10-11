@@ -228,6 +228,8 @@ Route::group(['namespace'=>'Api','middleware'=>'auth:api'],function(){
 		Route::get('list-albumaffter','AlbumAffterController@listAlbumAfftero')->middleware('rbac.permission:website.view');
 		Route::post('why-choose','WhyChooseController@createOrUpdate')->middleware('rbac.permission:website.update');
 		Route::get('list-why-choose','WhyChooseController@list')->middleware('rbac.permission:website.view');
+		Route::post('about-blocks','AboutBlockController@createOrUpdate')->middleware('rbac.permission:website.update');
+		Route::get('list-about-blocks','AboutBlockController@list')->middleware('rbac.permission:website.view');
 		Route::post('process-step','ProcessStepController@createOrUpdate')->middleware('rbac.permission:website.update');
 		Route::get('list-process-step','ProcessStepController@list')->middleware('rbac.permission:website.view');
 		Route::post('faq','FaqController@createOrUpdate')->middleware('rbac.permission:website.update');

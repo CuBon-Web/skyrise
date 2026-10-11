@@ -25,6 +25,7 @@
 {{ url($aboutImage) }}
 @endsection
 @section('css')
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&subset=vietnamese&display=swap">
 <link rel="stylesheet" href="/frontend/css/about-page.css?v={{ filemtime(public_path('frontend/css/about-page.css')) }}">
 @endsection
 @section('content')
@@ -81,6 +82,48 @@
                 </li>
             @endforeach
         </ul>
+
+        @if ($aboutBlocks->isNotEmpty())
+            <section class="about-mission" aria-label="Tầm nhìn, sứ mệnh và giá trị cốt lõi">
+                @foreach ($aboutBlocks as $block)
+                    <article class="about-mission__block{{ $block->image ? ' has-image' : '' }}{{ $block->decor ? ' has-decor' : '' }}"
+                        @if ($block->image) style="--block-bg: url('{{ url($block->image) }}')" @endif
+                        aria-labelledby="about-mission-{{ $block->id }}">
+                        @unless ($block->image)
+                            <img class="about-mission__clouds" src="/frontend/images/dammay-clean.png" alt="" width="900" height="300" loading="lazy" decoding="async" aria-hidden="true">
+                        @endunless
+                        @if ($block->decor)
+                            <span class="about-mission__balloons" aria-hidden="true">
+                                <img class="about-mission__balloon about-mission__balloon--lg" src="/frontend/images/khicau4.png" alt="" width="200" height="200" loading="lazy" decoding="async">
+                                <img class="about-mission__balloon about-mission__balloon--md" src="/frontend/images/khicau1.png" alt="" width="200" height="200" loading="lazy" decoding="async">
+                                <img class="about-mission__balloon about-mission__balloon--sm" src="/frontend/images/khicau3.png" alt="" width="200" height="200" loading="lazy" decoding="async">
+                            </span>
+                        @endif
+
+                        <div class="about-mission__content">
+                            <h2 class="about-mission__title" id="about-mission-{{ $block->id }}">{{ $block->title }}</h2>
+                            @if (trim((string) $block->intro) !== '')
+                                <p class="about-mission__intro">{!! nl2br(e($block->intro)) !!}</p>
+                            @endif
+                            @if (!empty($block->items))
+                                <ul class="about-mission__list">
+                                    @foreach ($block->items as $item)
+                                        <li>
+                                            @if (!empty($item['title']))
+                                                <h3>{{ $item['title'] }}</h3>
+                                            @endif
+                                            @if (!empty($item['description']))
+                                                <p>{{ $item['description'] }}</p>
+                                            @endif
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            @endif
+                        </div>
+                    </article>
+                @endforeach
+            </section>
+        @endif
 
         @if ($gioithieu && trim(strip_tags((string) $gioithieu->content)) !== '')
             <section class="about-story" aria-labelledby="about-story-title">

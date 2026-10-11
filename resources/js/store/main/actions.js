@@ -187,6 +187,25 @@ export const listWhyChoose = ({commit}, opt) => {
     });
 };
 
+export const saveAboutBlocks = ({commit}, opt) => {
+    return new Promise((resolve, reject) => {
+        HTTP.post('/api/website/about-blocks', opt).then(response => {
+            return resolve(response.data);
+        }).catch(error => {
+            return reject(error);
+        });
+    });
+};
+export const listAboutBlocks = ({commit}, opt) => {
+    return new Promise((resolve, reject) => {
+        HTTP.get('/api/website/list-about-blocks', opt).then(response => {
+            return resolve(response.data);
+        }).catch(error => {
+            return reject(error);
+        });
+    });
+};
+
 export const saveProcessStep = ({commit}, opt) => {
     return new Promise((resolve, reject) => {
         HTTP.post('/api/website/process-step', opt).then(response => {

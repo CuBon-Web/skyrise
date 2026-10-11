@@ -255,6 +255,12 @@ let _routers = [
                 meta: { requiresAuth: true },
             },
             {
+                name: 'aboutBlocks',
+                path: '/about-blocks',
+                component: _import('website/aboutBlocks'),
+                meta: { requiresAuth: true },
+            },
+            {
                 name: 'processStep',
                 path: '/process-step',
                 component: _import('website/processStep'),
@@ -683,7 +689,7 @@ function inferRequiredPermission(path) {
     if (path.startsWith('/pagecontent')) return 'pagecontent.view';
     if (path.startsWith('/customer')) return 'customer.view';
     if (path.startsWith('/promotion')) return 'promotion.view';
-    if (path.startsWith('/event')) return 'website.view';
+    if (path.startsWith('/event') || path.startsWith('/about-blocks')) return 'website.view';
     if (
         path.startsWith('/banner') ||
         path.startsWith('/bannerslogan') ||

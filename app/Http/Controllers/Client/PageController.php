@@ -28,6 +28,7 @@ use App\User;
 use Mail;
 use App\Mail\ContactNotificationMail;
 use App\models\ReviewCus;
+use App\models\website\AboutBlock;
 use App\models\website\Setting;
 use Illuminate\Support\Facades\Log;
 use App\models\website\ProcessStep;
@@ -223,6 +224,7 @@ class PageController extends Controller
         $data['gioithieu'] = PageContent::where(['slug'=>'gioi-thieu','language'=>'vi'])->first(['id','title','description','content','image']);
        
         $data['ReviewCus'] = ReviewCus::where(['status'=>1])->get();
+        $data['aboutBlocks'] = AboutBlock::where('status', 1)->orderBy('sort')->get();
         return view('aboutus',$data);
     }
     public function contact()
